@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="cn.vector.mybatis.mapper.TagMapper">
+    <resultMap id="BaseResultMap" type="cn.vector.mybatis.entity.Tag">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="status" jdbcType="CHAR" property="status"/>
+        <result column="createby" jdbcType="VARCHAR" property="createby"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updateby" jdbcType="VARCHAR" property="updateby"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="note" jdbcType="VARCHAR" property="note"/>
+    </resultMap>
+
+    <!--
+        可以按照mybatis的模样写成#{id}这种格式，但是这样的话需要我们花时间去解析
+        在这里，为了简化代码，我们这里直接用?作为占位符
+    -->
+    <select id="selectByPrimaryKey" parameterType="int" resultMap="BaseResultMap">
+        SELECT * FROM t_tag WHERE id = ?
+    </select>
+
+</mapper>
